@@ -40,12 +40,14 @@ Metoda de add este o metoda sincronizata pentru ca obtineam race condition atunc
 In cadrul acestei clase metoda de addTask este de asemenea esentiala. Practic in dispatcher cand un task este asignat unui host se apeleaza aceasta metoda care adauga taskul in coada acelui host.
 Hostul fiind un Thread avem o metoda de run() unde se implementeaza logica hostului. Folosesc cozi blocante, BlockingQueue, ca sa ma ajute cu sincronizarea. Se scoate un task un coada si se introduce in coada de executie. Parcurg cu un iterator coada de taskuri ca sa verific prioritatile taskurilor viitoare in cazul in care trebuie sa se execute un task cu prioritate mai mare in fata celui curent sau daca cel curent e preemtibil si atunci se executa partial si lasa unul mai important in fata. Daca nu e indeplinita niciuna din aceste conditii se executa taskul si ma folosesc de un while in care verific ca getLeft ul sa fie mai mare decat 0 si calculez timpul ramas utilizand functia System.currentTimeMillis() din Java ca sa setez mereu timpul ramas. Cand un task e gata il scot din coada de executie si ii dau finish() ca sa mi se actualizeze timpul. Executia in sine e o asteptare si dau wait() cand e gata taskul su dupa ce dau finish() dau si notify() pentru a incheia asteptarea.
 
-La partea de prioritati ma asigur ca nu am un task cu prioritate mai mare care asteapta in coada si daca am il execut pe acesta si atunci task_curent devine next_task si bag taskul curent inapoi in coada ca sa-l execut mai tarziu.
+La partea de ***prioritate*** ma asigur ca nu am un task cu prioritate mai mare care asteapta in coada si daca am il execut pe acesta si atunci task_curent devine next_task si bag taskul curent inapoi in coada ca sa-l execut mai tarziu.
 
-La partea de preemty verific ca taskul curent sa fie preemtibil si daca da, las un task cu prioritate mai mare si am facut o functie de execute_partial() pentru asta. Cand taskul e in executie verific daca apare vreun task cu prioritate mai mare si daca da, opresc taskul curent ca sa-l las pe acesta sa se execute si fac sleep() pt el.
+La partea de ***preemty*** verific ca taskul curent sa fie preemtibil si daca da, las un task cu prioritate mai mare si am facut o functie de execute_partial() pentru asta. Cand taskul e in executie verific daca apare vreun task cu prioritate mai mare si daca da, opresc taskul curent ca sa-l las pe acesta sa se execute si fac sleep() pt el.
 
 Alte functii auxiliare implementate sunt:
 
--> public int lungime_cozi() pentru lungimea celor 2 cozi
--> public void executePartialTask(Task task_curr, Task next_task) pentru preemty
--> public  boolean isPreemptible(Task task) True/False daca e preemty sau nu un task
+#### -> public int lungime_cozi() pentru lungimea celor 2 cozi
+
+#### -> public void executePartialTask(Task task_curr, Task next_task) pentru preemty
+
+#### -> public  boolean isPreemptible(Task task) True/False daca e preemty sau nu un task
