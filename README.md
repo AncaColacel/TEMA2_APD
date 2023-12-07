@@ -48,6 +48,9 @@ Alte functii auxiliare implementate sunt:
 
 #### -> public int lungime_cozi() pentru lungimea celor 2 cozi
 
+
 #### -> public void executePartialTask(Task task_curr, Task next_task) pentru preemty
 
+
 #### -> public  boolean isPreemptible(Task task) True/False daca e preemty sau nu un task
+
