@@ -7,7 +7,7 @@ In vederea realizarii acestei teme am lucrat in fisierele MyDispatcher.java si M
 Voi detalia in cele ce urmeaza codul scris in cele 2 fisiere mentionate mai sus.
 
 
-***-> MyDispacther***
+#### MyDispatcher
 Aceasta clasa implementeaza clasa abstracta Dispatcher. Am scris in cadrul metodei addTask pentru fiecare din cele 4 politici. Pun cate un if in care verific daca algoritmul este unul din cei patru specifici celor 4 politici din ENUM-ul pus la dispozitie.
 
 ***1) ROUND ROBIN (RR)***
@@ -36,4 +36,4 @@ La aceasta politica asignez taskul curent acelui host cu cel mai putin de execut
 
 Metoda de add este o metoda sincronizata pentru ca obtineam race condition atunci cand alegeam hostii.
 
-***-> MyHost***
+#### MyHost
