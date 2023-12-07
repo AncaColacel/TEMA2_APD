@@ -7,9 +7,9 @@ In vederea realizarii acestei teme am lucrat in fisierele MyDispatcher.java si M
 Voi detalia in cele ce urmeaza codul scris in cele 2 fisiere mentionate mai sus.
 
 
-***1) MyDispacther***
+***- MyDispacther***
 Aceasta clasa implementeaza clasa abstracta Dispatcher. Am scris in cadrul metodei addTask pentru fiecare din cele 4 politici. Pun cate un if in care verific daca algoritmul este unul din cei patru specifici celor 4 politici din ENUM-ul pus la dispozitie.
-***-> ROUND ROBIN (RR)***
+***1) ROUND ROBIN (RR)***
 Daca s-a ales aceasta politica incep cu prezumtia cum ca primul task este asignat primului host din lista de hosti si marchez cu o variabila faptul ca am asignat primul task. Ulterior daca nu e vorba de primul, ma asigura ca asignez taskuri hostilor tinand seama de formula precizata in cerinta.
 ```
 (i + 1)%n
@@ -32,3 +32,5 @@ Fac asta cu 3 if-uri.
 
 ***4) Least Work Left (LWL)***
 La aceasta politica asignez taskul curent acelui host cu cel mai putin de executat. Am o metoda de getWorkLweft care calculeaza cantitatea de munca ramasa pentru acel thread si ma folosesc de aceasta metoda ca sa aleg hostul. Aceasta metoda parcurge mai intai coada cu taskuri aflate in asteptare si aduna getDuration-ul la fiecare dupa care parcurge coada cu taskuri aflate in executie si pentru un task aflat in executie nu ma mai intereseaza durata initiala pentru ca din acesta se scade in timp ce taskul se executa asa ca mi-o scot din suma si adun in schimb getLeft adica punctual cat mai are taskul meu pana e gata si in felul asta am la orice moment de timp o durata pt un host anume.
+
+***- MyHost***
