@@ -14,7 +14,6 @@ Aceasta clasa implementeaza clasa abstracta Dispatcher. Am scris in cadrul metod
 Daca s-a ales aceasta politica incep cu prezumtia cum ca primul task este asignat primului host din lista de hosti si marchez cu o variabila faptul ca am asignat primul task. Ulterior daca nu e vorba de primul, ma asigur ca asignez taskuri hostilor tinand seama de formula precizata in cerinta.
 ```
 (i + 1)%n
-
 ```
 i este id-ul hostului ales anterior, iar n este numarul de hosti in total.
 Updatez apoi indicele pentru a fi ok calculul la taskul urmator si asa mai departe.
